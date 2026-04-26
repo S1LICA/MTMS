@@ -1,0 +1,297 @@
+Modularity (MOD):
+
+MOD 01:
+A] The robot should allow for additional modules to be easily removed (with basic hand tools) under 10 minutes from start to finish. Mechanisms concerning said removal should have very little compromises on strength, stability and reliability of use.
+
+MOD 02:
+A] The robot’s core should contain standardized mounting holes/ports for ease of design and universal mounting for modules.
+B] The robot’s core should be designed with some future intent of sealant capabilities.
+
+MOD 03:
+A] The robot’s modules should be fairly universal in aesthetics and should try to retain similar dimensions for all terrains.
+
+MOD 04:
+A] The robot should provide standardized power connectors for all modules
+B] The robot should be fit with a universal voltage rail for all modules (either 5V, 12V, 24V)
+C] The robot should be fit with Safety measures for faulty modules e.g. fuses
+D] The robot should be fit with a status board to monitor the status of all modules
+
+MOD 05:
+A] The robot should have software should provide diagnostic information on faulty modules
+B] The robot should support 4 transport modules (terrain specific) and 4 additional modules
+
+	
+
+Data Logging and Communication (DCOM):
+
+DCOM 01:
+A] The robot should log data from all active sensor modules
+B] The robot should log data with metadata including timestamps from a synchronized clock and location
+C] The robot should log data in a certain format (e.g. CSV, JSON)
+D] The robot should ensure consistent sensor reading and logging without data loss during normal operation.
+
+DCOM 02:
+A] The robot should leave validation of data for ground computer
+B] The robot should notify the user of corrupted or incomplete data immediately.
+C] The robot should prevent overwriting or deleting data unless explicitly configured to
+
+DCOM 03:
+A] The robot should support a logging duration equal to it’s battery life (POW01)
+B] The robot should monitor level of storage and issue warnings when low.
+C] The robot should support removable storage in the form of a SD Card.
+D] The robot should 
+
+DCOM 04:
+A] The robot should support a primary communication channel for control and telemetry
+B] The robot should support a secondary communication channel for backup if the primary channel fails.
+C] The robot should have a maximum range 80% of whatever communication device is listed
+
+DCOM 05:
+A] The robot should transmit telemetry at a defined frequency back to the ground computer
+B] The robot should prioritize errors and critical data (e.g. warnings and faults)
+C] The robot should detect a loss of communication and attempt reconnection autonomously
+D] The robot should safely and autonomously stop or reach land if communication is lost for a defined period of time
+
+DCOM 06:
+A] The robot should maintain a control latency of 200-300ms for responsive driving
+
+Sensors (SEN):
+
+SEN 01:
+A] The robot should acquire data from all physically installed sensor modules
+B] The robot should associate each sensor reading with a sensor and module ID
+C] The robot should support operation of multiple sensors simultaneously
+D] The robot should should support calibration parameters for each sensor
+E] The robot should continue operation if a non-critical sensor fails
+F] The robot should designate critical and non-critical sensor types/modules
+G] The robot should sample each sensor at its required update frequency seen in SEN 08
+
+SEN 02:
+A] The robot should measure atmospheric CO2 concentration to a X% accuracy
+B] The robot should measure particulate matter concentration at a PM2.5 size range to a X% accuracy
+C] The robot should measure ambient temperature to a X% accuracy
+D] The robot should measure relative humidity to a X% accuracy
+E] The robot should measure atmospheric pressure to a X% accuracy
+F] The robot should measure ambient temperature to a X% accuracy
+G] The robot should measure wind speed to a X% accuracy
+H] The robot should measure wind direction to a X% accuracy
+I] The robot should identify ‘warm-up’ time for the sensors that need stabilization before valid readings can be made
+
+SEN 03:
+A] The robot should measure supply voltage
+B] The robot should measure current draw of the main system
+C] The robot should estimate battery state or remaining capacity
+D] The robot should detect abnormal power conditions
+E] The robot should log power measurements and faults
+F] The robot should notify the control system when power is below a certain threshold
+
+SEN 04:
+A] The robot should detect and report obstacles distances using ultrasonic sensor
+B] The robot should flag measurements that are invalid due to range limits or poor reflections
+C] The robot should provide proximity data to the safety system
+D] The robot should support multiple ultrasonic sensors if required for different applications
+
+SEN 05:
+A] The robot should capture image and video data from the onboard camera
+B] The robot should timestamp captured frames
+C] The robot should maintain a constant image resolution and frame rate
+D] The robot should transmit camera data for monitoring/analysis
+
+SEN 06:
+A] The robot should allow sensor data (especially video feed) to the ground station for real time analysis for faults and tele-operation.
+B] The robot should be designed with safety sensors as the main priority
+SEN 07:
+A] The robot should sample IMU data at a frequency of X Hz
+B] The robot should sample GNSS position data at a frequency of X Hz
+C] The robot should sample humidity at a frequency of X Hz
+D] The robot should sample CO2 concentration at a frequency of X Hz
+E] The robot should sample temperature at a frequency of X Hz
+F] The robot should sample atmospheric pressure at a frequency of X Hz
+G] The robot should sample wind speed and direction at a frequency of X Hz
+
+Localisation (LOC):
+
+LOC 01:
+A] The robot should determine global position using GNSS when satellite data is available
+B] The robot should estimate local motion using odometry
+C] The robot should measure heading using magnetometer
+D] The robot should measure acceleration and angular rate using an IMU
+E] The robot should gracefully combine aforementioned sensor info to produce a unified localisation estimate.
+
+LOC 02:
+A] The robot should account for differing update rates between sensors
+B] The robot shall determine a method to weight different sensor readings based on availability and reliability and put into a filter
+
+LOC 03:
+A] The robot should update localisation estimates at a minimum defined frequency of X Hz
+
+LOC 04:
+A] The robot should output position, velocity, and orientation back to ground computer
+B] The robot should provide localisation data to the navigational and control systems
+
+LOC 05:
+A] The robot should detect a loss of GNSS signal
+B] The robot should continue estimating position using IMU and odometry based on the previous available GNSS reading
+C] The robot should recognise degraded localisation accuracy
+D] The robot should maintain a positional accuracy of X metres.
+
+Software (SOF):
+
+SOF 01:
+A] The robot should execute onboard software to manage and combine sensing, control, communication and logging
+B] The robot should initialize required software services during startup
+C] The robot should verify successful startup of critical software components
+D] The robot should enter a safe, predetermined state if critical software or hardware components fail to start
+
+SOF 02:
+A] The robot should separate software into distinct categories (e.g. sensing, localisation, control, communication and data logging)
+B] The robot should allow new hardware modules to be supported by adding it’s corresponding software drivers.
+C] The robot should allow software modules to be independently updated for isolated troubleshooting
+
+SOF 03:
+A] The robot should validate sensor data before analysis, logging or communication, the extent of which is TBD
+
+SOF 04:
+A] The robot should provide a software interface for communication between functional modules
+B] The robot should ensure that failure in non critical software does not crash the entire system
+
+SOF 05:
+A] The robot should store configurable software parameters for sensors, localisation, communication and control
+B] The robot should allow configuration parameters to be modified extremely easily
+C] The robot should maintain an configuration log with saved configurations for quick and easy access.
+
+SOF 06:
+A] The robot should provide status information to the operator
+B] The robot should provide a user friendly experience for the ground computer and should be able to be ran with low cost controllers.
+C] The robot should maintain version information for deployed software components
+D] The robot should support future addition of new sensors and mobility modules without major software redesign
+
+Navigation (NAV):
+
+NAV 01- Location tracking:
+A] The system shall be able to determine its geographic location and update it at defined time intervals
+B] The system shall record location data alongside sensor data
+C] The system shall store location data locally when communication is unavailable
+D] The system shall maintain a history of recorded locations for later retrieval
+
+Nav 02- Location reporting:
+A] The system shall transmit its current or last-known location to an external system
+B] The system shall include location data in all transmitted datasets.
+C] The system shall provide location data during both normal and fault conditions.
+
+Nav 03- Emergency location and retrieval support:
+A] The system shall transmit its last known location upon entering abort mode.
+B] The system shall prioritise location transmission during critical power conditions.
+C] The system shall retain location data during system shutdown. 
+D] The system shall provide sufficient location data to enable physical retrieval.
+E] The system shall enable identification of the system during recovery operations. 
+Control (CON):
+
+CON 01- Control philosophy:
+A] The system shall first be designed for certain sensors and movement to be completely user controlled and later optimised to be primarily autonomous with user interaction allowed for overriding certain functions
+B] The system shall automatically manage sensor operation based on configured parameters unless indicated otherwise
+C] One raspberry pi acts as the main computer and an arduino controls the sensors and feed it back into the raspberry pi to receive instructions
+
+CON 02- User control capabilities during operation: 
+A] The user shall be able to stop and start system operation 
+B] The user shall be able to place the system into standby or low-power mode.
+C] The user shall be able to initiate a system reset.
+D] The user shall be able to manually trigger an abort mode.
+E] The user shall be able to request immediate data transmission.
+F] The user shall be able to place the system into a safe shutdown state. 
+CON 03- System feedback and communication:
+A] The system shall provide status feedback for all control actions.
+B] The system shall report current system state (e.g. active, standby, fault).
+C] The system shall provide confirmation of configuration changes.
+D] The system shall receive and process control commands from an external device.
+E[ The system shall confirm execution of received commands. 
+
+CON 04- Control verification:
+A] The system shall validate all received control commands before execution.
+B] The system shall reject invalid or unsafe commands.
+C] The system shall prevent user commands from causing system damage or data loss.
+
+Power (POW):
+
+POW 01- Power supply details:
+A] The system shall be powered by an internal rechargeable lithium-ion battery system
+B] The system shall operate using a nominal supply voltage between X V and Y V.
+C] The system shall provide regulated power outputs dependent on the module
+D] The system shall include voltage regulation circuitry to ensure stable operation of all components.
+
+POW 02- Power distribution:
+A] The system shall distribute power from a central power management unit to the core and module components
+B] The system shall prevent voltage fluctuations from affecting sensor or processing performance.
+C] The system shall isolate critical components from non-critical loads where possible. 
+POW 03- Power monitoring:
+A] The system shall continuously monitor battery voltage.
+B] The system shall estimate remaining battery capacity based on voltage levels.
+C] The system shall monitor internal temperature for safety purposes.
+D] The system may monitor current draw to detect abnormal power usage.
+
+POW 04- Power state management:
+A] The system shall prioritise data preservation during all low-power states. 
+B] The system shall operate with defined power states based on battery level.
+C] The system shall transition between normal, warning, and critical power modes. (EMRG 02)
+D] In normal mode all systems operate normally
+E] In warning mode sensor sampling frequency and communication frequency are reduced to conserve power
+F] In critical mode non-essential components including non-essential sensors will be stopped to prevent corruption and prioritise data storage and transmission
+
+POW 05- Battery safety features:
+A] The system shall include battery protection circuitry (BMS).
+B] The system shall prevent overcharging and over-discharging of the battery.
+C] The system shall protect against short circuits and excessive current draw.
+D] The system shall shut down safely under unsafe electrical conditions.
+
+Emergencies (EMRG):
+
+EMRG 01- Data emergency features:
+A] The system stores data locally before transmitting 
+B] Recording continues regardless of connection status
+C] Data is uploaded automatically immediately after signal return
+D] Critical readings and timestamp logs are duplicated
+E] The system shall adapt sampling and transmission rates during degraded conditions
+
+EMRG 02- Power emergency features:
+A] The system shall detect and report low battery conditions and send warnings at: 20%, 10% and 5% 
+B] Warning mode commences at 10%
+C] Shutdown starts at 5% by commencing pre-shutdown operations to reserve sufficient energy before carrying out the final data transmission during shutdown
+D] Starting from 10% the system shall initiate protective behaviours including preventing battery over-discharge and initial power reserving
+
+EMRG 03- Communication emergency features:
+A] When signal is lost the system periodically attempts to auto-reconnecting
+B] The system shall support alternative communications in case of a primary failure by attempting WiFi, LoRa and finally bluetooth
+C] Periodic status signals are transmitted to confirm operational health
+D] Signals of location are sent at shutdown and location data of launch and emergency contact can be accessed
+
+EMRG 04- Health detection protocols:
+A] The system shall perform periodic self-diagnostics to assess operational health
+B] During fault conditions the system shall enter a reduced-function mode where non-essential sensors are stopped to prioritise data saving and transmission
+C] Internal moisture ingress will be detected to trigger a fault state in the case of leaks
+D] Overheating shall be detected then prevented by reducing or stopping operation under high internal temperatures
+
+General Design (GEN):
+
+GEN 01- Core design:
+A] The core should be within a cylinder of dimension 300m x Ø100mm and external modules will have dimensions limits specific to each module
+B] The core should weigh a maximum of 2.5 kg
+C] The core should have waterproofing: IP67 minimum (ideally IP68\)
+D] The core should maintain integrity under standard deployment conditions
+
+GEN 02- Sustainable design:
+A] The system should use reusable connectors and fasteners wherever possible
+B] The system may support future integration of renewable energy sources such as solar charging
+GEN 03- Journey details:
+A] The system should clearly display information regarding vitals including battery power, connection status and internal temperature
+B] The duration and power usage for one-way and return journeys should be calculated using a given route 
+
+GEN 04- Mounting:
+A] The system shall support sensor integration via sealed connectors or mounting ports
+B] The end cap shall allow mounting of multiple sensors
+C] The system shall support vertical or horizontal deployment orientations
+D] The enclosure shall include mounting points or support external mounting mechanisms
+E] The power supply should be easily removable for ease of recharging
+Autonomous Operations (AUTO):
+
+AUTO 1:
+Whether battery conditions will be sufficient to complete the mission will be periodically calculated and if they are not sufficient, the system will either return or continue dependent on which is more optimal
