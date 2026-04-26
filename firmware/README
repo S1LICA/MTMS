@@ -1,0 +1,11 @@
+Firmware
+  Drivers
+    Sensors
+    IMU
+    GNSS
+    Camera
+    Power monitoring
+  Communication
+  Control
+  Diagnostics
+  Main
